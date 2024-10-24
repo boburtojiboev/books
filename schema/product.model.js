@@ -1,11 +1,4 @@
 const mongoose = require("mongoose");
-const {
-  product_collection_enums,
-  product_status_enums,
-  product_discount_enums,
-  product_size_enums,
-  product_colors_enums,
-} = require("../lib/config");
 
 const Schema = mongoose.Schema;
 
@@ -21,6 +14,11 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
     product_sold_cnt: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    product_cnt: {
       type: Number,
       required: false,
     },

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const memberController = require("./controller/memberController");
+const orderController = require("./controller/orderController");
 const productController = require("./controller/productController");
 const uploader_product = require("./utils/upload-multer")("products");
 // const uploader_product = require("./utils/upload-multer")("products");
@@ -42,4 +43,23 @@ router.delete(
   productController.deleteChosenProduct
 );
 
+
+// Order related routers
+router.post(
+  "/orders/create",
+  memberController.retrieveAuthMember,
+  orderController.createOrder
+);
+
+router.get(
+  "/orders",
+  memberController.retrieveAuthMember,
+  orderController.getMyOrders
+);
+
+router.post(
+  "/orders/edit",
+  memberController.retrieveAuthMember,
+  orderController.editChosenOrder
+);
 module.exports = router;

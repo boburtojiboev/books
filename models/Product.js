@@ -26,7 +26,6 @@ class Product {
   async updateChosenProductData(id, updated_data, mb_id) {
     try {
       id = shapeIntoMongooseObjectId(id);
-      console.log("shu", id);
       mb_id = shapeIntoMongooseObjectId(mb_id);
       const result = await this.productModel
         .findByIdAndUpdate({ _id: id, mb_id: mb_id }, updated_data, {
@@ -69,7 +68,7 @@ class Product {
       id = shapeIntoMongooseObjectId(id);
 
       const result = await this.productModel
-        .aggregate([{ $match: { _id: id} }])
+        .aggregate([{ $match: { _id: id } }])
         .exec();
 
       assert.ok(result, Definer.general_err1);
