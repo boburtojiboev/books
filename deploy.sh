@@ -1,6 +1,6 @@
 #!/bin/bash
 
 # PRODUCTION
-git checkout master
-npm i
-pm2 start process.config.js --env production
+# git checkout master
+# npm i
+pm2 start "npm run start" --name=Books-Backend
